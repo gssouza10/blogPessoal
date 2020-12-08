@@ -21,19 +21,19 @@ export class CadastroComponent implements OnInit {
   ngOnInit() {
   }
 
-  conferirSenha(event: any) {
-    this.senha = event.target.value
-  }
-
   cadastrar() {
     if ( this.senha === this.user.senha ) {
-      this.authService.cadastrar(this.user).subscribe((resp: any = User) => {
+      this.authService.cadastrar(this.user).subscribe((resp: User) => {
         this.user = resp
         this.router.navigate(['/login'])
         alert('Usuário cadastrado com sucesso!')
       })
     } else {
-      alert('Suas senhas não conferem')
+      alert('Senha inválida!')
     }
+  }
+
+  conferirSenha(event: any) {
+    this.senha = event.target.value
   }
 }

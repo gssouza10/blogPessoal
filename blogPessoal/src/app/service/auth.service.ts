@@ -1,7 +1,9 @@
-import { Injectable } from '@angular/core';
+  
 import { HttpClient } from '@angular/common/http';
-import { UserLogin } from './../model/UserLogin';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { User } from '../model/User';
+import { UserLogin } from '../model/UserLogin';
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +12,15 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  logar(userLogin: UserLogin) {
-    return this.http.post('http://localhost:9000/usuarios/logar', userLogin)
+  logar(userLogin: UserLogin) : Observable<UserLogin> {
+    return this.http.post<UserLogin>('http://localhost:9000/usuarios/logar', userLogin)
   }
 
-  cadastrar(user: User) {
-    return this.http.post('http://localhost:9000/usuarios/cadastrar', user)
+  cadastrar(user: User) : Observable<User> {
+    return this.http.post<User>('http://localhost:9000/usuarios/cadastrar', user)
   }
 
-  btnSair(){
+  btnSair() {
     let ok = false
     let token = localStorage.getItem('token')
 
@@ -29,7 +31,7 @@ export class AuthService {
     return ok
   }
 
-  btnLogin(){
+  btnLogin() {
     let ok = false
     let token = localStorage.getItem('token')
 
