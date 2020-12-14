@@ -10,8 +10,6 @@ import { DeletePostagemComponent } from './delete-postagem/delete-postagem.compo
 import { PutTemaComponent } from './put-tema/put-tema.component';
 import { DeleteTemaComponent } from './delete-tema/delete-tema.component';
 
-
-
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent },
